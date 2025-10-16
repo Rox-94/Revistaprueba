@@ -12,8 +12,8 @@
 
     #flipbook {
       width: 100%;
-      max-width: 850px; /* Ajustado para coincidir con tu .page-container */
-      height: 600px; /* Altura inicial para el flipbook */
+      max-width: 850px; 
+      height: 600px; 
       margin: 40px auto;
       background: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -35,12 +35,11 @@
     @media (max-width: 768px) {
       #flipbook {
         width: 90%;
-        height: 400px; /* Ajuste para dispositivos móviles */
+        height: 400px; 
       }
     }
   </style>
-  <!-- Scripts locales desde tu repositorio -->
-  <script src="js/jquery-3.6.0.min.js"></script> <!-- Asegúrate de que el nombre coincida -->
+  <script src="js/jquery-3.6.0.min.js"></script> 
   <script src="js/turn.js"></script>
 </head>
 <body>
@@ -91,11 +90,11 @@
   <script>
     $(document).ready(function() {
       $("#flipbook").turn({
-        width: 850,  // Ajustado para coincidir con tu diseño
+        width: 850,  
         height: 600,
         autoCenter: true,
         gradients: true,
-        direction: 'ltr'  // Cambia a 'rtl' si necesitas el efecto de derecha a izquierda
+        direction: 'ltr' 
       });
     });
   </script>
