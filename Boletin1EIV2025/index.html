@@ -1,106 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Revista VIEX 2025</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8">
+    <title>Mini Revista VIEX 2025</title>
+    <style>
+        body, html {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            /* Se remueve overflow: hidden; del body para permitir el margen vertical */
+            height: 100vh;
+        }
 
-    #flipbook {
-      width: 100%;
-      max-width: 850px;
-      height: 600px;
-      margin: 40px auto;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        /* Contenedor principal: Mantenemos el ancho para la vista doble */
+        #container {
+            position: relative;
+            width: 100%;
+            max-width: 1250px; 
+            height: 90vh; 
+            margin: 5vh auto; 
+        }
 
-    .page {
-      width: 100%;
-      height: 100%;
-      background: white;
-      overflow: hidden;
-    }
+        #flipbook {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden; 
+        }
 
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-      margin-top: 60px;
-    }
+        /* Cada elemento .page debe ser 100% (porque es modo 'single' de ancho doble) */
+        .page {
+            width: 100%; 
+            height: 100%; 
+            background: white;
+            overflow: hidden; 
+        }
+        
+        iframe {
+            overflow: hidden !important;
+        }
 
-    @media (max-width: 768px) {
-      #flipbook {
-        width: 90%;
-        height: 400px;
-      }
-    }
-  </style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/turn.js"></script>
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .control-button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .control-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Estilos para los botones de navegación (flechas) */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 15px 15px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+            line-height: 0;
+            border-radius: 5px;
+        }
+
+        .nav-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        #prev-page {
+            left: -40px; 
+        }
+
+        #next-page {
+            right: -40px;
+        }
+
+        @media (max-width: 1300px) { 
+            #prev-page { left: 0px; }
+            #next-page { right: 0px; }
+            #container {
+                max-width: 95%;
+                margin: 5vh auto;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/turn.js"></script>
 </head>
 <body>
-  <h1>🌎 Escuela Internacional de Verano 2025 ✨</h1>
+    <h1>🌎 Escuela Internacional de Verano 2025 ✨</h1>
 
-  <div id="flipbook">
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-1.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-2.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-3.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-4.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-5.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-6.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-7.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-8.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-9.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-10.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-11.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-    <div class="page">
-      <iframe src="publication-web-resources/html/publication-12.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-  </div>
+    <div id="container">
+        <button class="nav-button" id="prev-page" onclick="prevPage()">&#10094;</button> 
+        
+        <div id="flipbook">
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-1.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-2.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-3.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-4.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-5.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-6.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-7.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-8.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-9.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-10.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-11.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+            <div class="page">
+                <iframe src="publication-web-resources/html/publication-12.html" style="width:100%; height:100%; border:none; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+        </div>
 
-  <script>
-    $(document).ready(function() {
-      try {
-        $("#flipbook").turn({
-          width: 850,
-          height: 600,
-          autoCenter: true,
-          gradients: true,
-          direction: 'ltr'
+        <button class="nav-button" id="next-page" onclick="nextPage()">&#10095;</button> 
+    </div>
+    
+    <div class="controls">
+        <button class="control-button" onclick="zoomIn()">Zoom +</button>
+        <button class="control-button" onclick="zoomOut()">Zoom -</button>
+        <button class="control-button" onclick="toggleFullscreen()">Pantalla Completa</button>
+    </div>
+
+    <script>
+        // Funciones de control globales
+        
+        // Función de navegación (Turn.js)
+        window.prevPage = function() {
+            $("#flipbook").turn("previous");
+        }
+
+        window.nextPage = function() {
+            $("#flipbook").turn("next");
+        }
+
+        // Funciones de Zoom (manipulan el CSS zoom)
+        window.zoomIn = function() {
+          var flipbook = document.getElementById('flipbook');
+          // Usamos la propiedad transform: scale() para el zoom, ya que 'zoom' está obsoleto
+          var currentScale = flipbook.style.transform ? parseFloat(flipbook.style.transform.replace(/[^\d.]/g, '')) : 1;
+          flipbook.style.transform = 'scale(' + (currentScale + 0.1) + ')';
+          flipbook.style.transformOrigin = 'center center'; // Mantiene el centro
+        }
+
+        window.zoomOut = function() {
+          var flipbook = document.getElementById('flipbook');
+          var currentScale = flipbook.style.transform ? parseFloat(flipbook.style.transform.replace(/[^\d.]/g, '')) : 1;
+          if (currentScale > 0.6) flipbook.style.transform = 'scale(' + (currentScale - 0.1) + ')';
+          flipbook.style.transformOrigin = 'center center';
+        }
+
+        // Función de Pantalla Completa (Fullscreen)
+        window.toggleFullscreen = function() {
+            var elem = document.getElementById('container'); // Usamos el contenedor principal
+            
+            if (!document.fullscreenElement) {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE11 */
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Inicialización de Turn.js
+        $(document).ready(function() {
+            try {
+                $("#flipbook").turn({
+                    // Configuraciones finales que funcionan
+                    width: 1224, 
+                    height: 792, 
+                    display: 'single', 
+                    autoCenter: true,
+                    gradients: true,
+                    direction: 'ltr'
+                });
+            } catch (error) {
+                console.log("Error al inicializar Turn.js: " + error);
+            }
         });
-      } catch (error) {
-        console.log("Error al inicializar Turn.js: " + error);
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
